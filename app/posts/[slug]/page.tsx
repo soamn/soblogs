@@ -36,23 +36,20 @@ async function getPosts(params: any) {
   return json.data.post;
 }
 async function getslugs() {
-  const response = await fetch(
-    "https://ap-south-1.cdn.hygraph.com/content/clzs3b92m07b507v1aup72a29/master?timestamp=${Date.now()}",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `{
+  const response = await fetch(`${process.env.GRAPHQL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `{
                posts{
                slug
                }
   
           }  `,
-      }),
-    }
-  );
+    }),
+  });
 
   const json = await response.json();
   return json.data.posts;
