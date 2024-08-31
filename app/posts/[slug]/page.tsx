@@ -1,13 +1,11 @@
 async function getPosts(params: any) {
-  const response = await fetch(
-    "https://ap-south-1.cdn.hygraph.com/content/clzs3b92m07b507v1aup72a29/master?timestamp=${Date.now}",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `{
+  const response = await fetch(`${process.env.GRAPHQL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `{
               post(where:{slug:"${params.slug}"}){
               id
     title
@@ -31,9 +29,8 @@ async function getPosts(params: any) {
 
 }
         }  `,
-      }),
-    }
-  );
+    }),
+  });
   const json = await response.json();
 
   return json.data.post;
