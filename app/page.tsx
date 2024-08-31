@@ -1,7 +1,7 @@
 import BlogCard from "./BlogCard";
 
 async function getPosts() {
-  const response = await fetch(`${process.env.GRAPHQL}`, {
+  const response = await fetch(`${process.env.GRAPHQL_API}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
