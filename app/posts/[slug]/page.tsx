@@ -115,16 +115,15 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const latestPosts = await getLatestPost(post.author.name);
 
   return (
-    <div className="p-10 bg-gray-100 text-gray-900">
+    <div className="p-1 bg-gray-100 ">
       <header className="bg-white shadow-md rounded-lg">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-center">{post.title}</h1>
+          <h1 className=" font-bold text-center md:text-2xl">{post.title}</h1>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 shadow-sm">
+      <main className="container mx-auto  py-8 shadow-sm">
         <article className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">{post.title}</h2>
           <div className="text-gray-700 mb-4">
             Published on {post.datePublished} by{" "}
             <div className="flex gap-4 text-center text-teal-500">
@@ -146,7 +145,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             dangerouslySetInnerHTML={{ __html: post.content.html }}
           ></div>
         </article>
-        <span className="text-gray-500 italic ml-[88%]">
+        <span className="text-gray-500 italic ">
           Posted on {post.datePublished}
         </span>
         <section className="mt-12">
